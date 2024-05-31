@@ -1,0 +1,28 @@
+dotnet new sln
+
+otnet new webapi -o API --use-controllers
+
+dotnet sln add API
+
+
+add-migration -name InitialCreate -OutputDir .\Data\Migrations -context StoreContext
+
+dotnet ef migrations add initialCreate -o Data/Migrations
+
+
+
+Update-Database
+dotnet ef database update
+
+
+npm create vite@latest
+
+
+git init
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/jsinnapillai/react-redux-neil.git
+git push -u origin main
