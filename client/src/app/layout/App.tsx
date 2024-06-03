@@ -4,21 +4,16 @@ import Header from "./Header";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
-import { useStoreContext } from "../../api/context/StoreContext";
 import { getCookie } from "../util/util";
 import agent from "../../api/agent";
-import { LoadingButton } from "@mui/lab";
 import LoadingComponents from "./LoadingComponents";
-
-// const productsar = [
-//   { name: "product1", price: 100.0 },
-//   { name: "product2", price: 200.0 },
-//   { name: "product3", price: 300.0 },
-//   { name: "product4", price: 400.0 },
-// ];
-
+import { useAppDispatch } from "../store/configureStore";
+import { setBasket } from "../../features/Basket/BasketSlice";
+ 
+ 
 function App() {
-  const {setBasket} = useStoreContext();
+  const dispatch = useAppDispatch();
+
   const [loading,setLoading] = useState(true);
 
 
@@ -26,14 +21,14 @@ function App() {
     const buyerId = getCookie("buyerId");
     if(buyerId){
       agent.Basket.get()
-      .then(response => setBasket(response))
+      .then(response => dispatch(setBasket(response)))
       .catch(error => console.log(error))
       .finally(() => setLoading(false))
     }
     else{
       setLoading(false);
     }
-  },[setBasket])
+  },[dispatch])
 
   const [darkmode,setDarkMode] = useState(false);
   const palletType = darkmode?'dark':'light'
