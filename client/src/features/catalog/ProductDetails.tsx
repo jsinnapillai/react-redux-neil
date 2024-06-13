@@ -5,7 +5,6 @@ import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, T
 import NotFound from "../../api/errors/NotFound";
 import LoadingComponents from "../../app/layout/LoadingComponents";
  
-import { BasketItem } from "../../app/models/basket";
 import { LoadingButton } from "@mui/lab";
 import { Rootstate, useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { addBasketItemAsync, removeBasketItemAsync } from "../Basket/BasketSlice";
