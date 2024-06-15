@@ -141,7 +141,7 @@ export const catalogSlice = createSlice({
     /// Filters area
 
     builder.addCase(fetchFilters.pending, (state,action) => {
-     console.log(action)
+    //  console.log(action)
       state.status = "pendingfetchFilters";
     });
     builder.addCase(fetchFilters.fulfilled, (state, action) => {

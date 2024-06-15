@@ -30,5 +30,10 @@ git push -u origin main
 
 add-migration -name BasketEntityAdded -OutputDir .\Data\Migrations -context StoreContext
 
+add-migration -name IdentityAdded -OutputDir .\Data\Migrations -context StoreContext
+
 To undo this action, use Remove-Migration.
 https://learn.microsoft.com/en-us/ef/core/modeling/relationships
+
+
+

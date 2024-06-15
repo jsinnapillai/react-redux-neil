@@ -13,6 +13,7 @@ import {
 import { Link, NavLink } from "react-router-dom";
  
 import { Rootstate, useAppSelector } from "../store/configureStore";
+import { SignedInMenu } from "./SignedInMenu";
 
 const midlinks = [
   { title: "catalog", path: "/catalog" },
@@ -44,6 +45,8 @@ interface Props {
 
 const Header = ({ darkMode, handleThemeChange }: Props) => {
   const {basket} = useAppSelector((state:Rootstate) => state.basket)
+  const {user} = useAppSelector((state:Rootstate) => state.account)
+
 const itemCount = basket?.items.reduce((sum,item) => sum + item.quantity,0)
 
 
@@ -82,8 +85,8 @@ const itemCount = basket?.items.reduce((sum,item) => sum + item.quantity,0)
             <ShoppingCart />
           </Badge>
         </IconButton>
-
-        <List sx={{ display: "flex" }}>
+        {user ? (<SignedInMenu />)
+        : (        <List sx={{ display: "flex" }}>
           {rightlinks.map(({ title, path }) => (
             <ListItem
               component={NavLink}
@@ -95,6 +98,10 @@ const itemCount = basket?.items.reduce((sum,item) => sum + item.quantity,0)
             </ListItem>
           ))}
         </List>
+        )
+         }
+
+
         </Box>
       </Toolbar>
     </AppBar>
